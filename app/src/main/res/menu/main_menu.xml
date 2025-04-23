@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_preferences"
+        android:title="Preferences"
+        android:icon="@android:drawable/ic_menu_preferences"
+        app:showAsAction="never"
+        />
+
+    <item android:id="@+id/action_info"
+        android:title="Information"
+        android:icon="@android:drawable/ic_menu_info_details"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/my_search"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/more_action"
+        android:title="więcej"
+        >
+        <menu>
+            <item android:id="@+id/action_about"
+                android:title="0 Aplikacji"/>
+
+            <item android:id="@+id/action_help"
+                android:title="Pomoc"/>
+        </menu>
+    </item>
+
+    <item android:id="@+id/wild_action"
+        android:title="Groźne menu"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item android:id="@+id/action_eating"
+                android:title="0 zjadaniu użytkownika"/>
+            <item android:id="@+id/action_sleeping"
+                android:title="O zasypianiu">
+                <menu>
+                    <item android:id="@+id/action_studing"
+                        android:title="O uczeniu się"/>
+                    <item android:id="@+id/action_walking"
+                        android:title="0 chodzeniu"/>
+                </menu>
+            </item>
+
+        </menu>
+    </item>
+
+
+
+</menu>
