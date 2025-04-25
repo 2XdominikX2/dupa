@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,17 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.myToolbar)
         setSupportActionBar(toolbar)
 
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.navHostFragment) as NavHostFragment
+
+        val navController = navHostFragment.navController
+        NavigationUI.setupActionBarWithNavController(this, navController)
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.navHostFragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -33,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        /*return when(item.itemId){
             R.id.action_preferences ->{
                 Toast.makeText(this, "preferences", Toast.LENGTH_SHORT).show()
 
@@ -50,11 +64,13 @@ class MainActivity : AppCompatActivity() {
             }
             else ->{
                 super.onOptionsItemSelected(item)
-            }
+            }*/
+
+        val navController = findNavController(R.id.navHostFragment)
+        return NavigationUI.onNavDestinationSelected(item, navController ) ||
+                super.onOptionsItemSelected(item)
+
         }
 
-
-        return super.onOptionsItemSelected(item)
     }
 
-}
